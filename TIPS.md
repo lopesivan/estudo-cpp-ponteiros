@@ -1,6 +1,7 @@
 # Dicas de projeto
 
 ## Copia o ultimo arquivo para **ex-x.cpp** para **ex-y.cpp**.
+
 Onde `y = x + 1`.
 
 `cp ex-01.cpp ex-02.cpp`
@@ -20,3 +21,9 @@ Onde `y = x + 1`.
 find . -not -iwholename '*.git*' -type f -executable -delete
 ```
 
+## Build and Run
+
+    make ARG=01   # compila e roda o arquivo ex-01.cpp
+    make ARG=02   # compila e roda o arquivo ex-02.cpp
+
+---
