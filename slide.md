@@ -1,170 +1,64 @@
 ---
-title: Smart Pointers C++
+title:  ponteiros em C++ Moderno
 author: Ivan Lopes (lopesivan.ufrj@gmail.com)
-date: 2023-11-28
+date:   2021-11-22
 ---
 
-# O início
+descrição
 
-```cpp
-#include <iostream>
-
-int main() {
-
-    return 0; // success return
-}
-```
 
 ---
-
 # ex-01.cpp
-
-```cpp
-#include <iostream>
-
-struct Content {
-private:
-  std::string info;
-
-public:
-  Content(std::string info) : info(info) {}
-  void getInfo() { std::cout << info << '\n'; }
-};
-
-int main() {
-  // STACK
-  Content c("Olá mundo!");
-  c.getInfo();
-  return 0;
-}
+```file
+path: ./ex-01.cpp
+lang: cpp
 ```
 
 ---
-
 # ex-02.cpp
-
-```cpp
-#include <iostream>
-
-struct Content {
-private:
-  std::string info;
-
-public:
-  Content(std::string info) : info(info) {}
-  void getInfo() { std::cout << info << '\n'; }
-};
-
-int main() {
-  /* MEMÓRIA BRUTA */
-  Content *c = new Content("Olá mundo!");
-  c->getInfo();
-  delete c;
-  return 0;
-}
+```file
+path: ./ex-02.cpp
+lang: cpp
 ```
 
 ---
-
 # ex-03.cpp
-
-```cpp
-#include <iostream>
-#include <memory>
-
-struct Content {
-private:
-  std::string info;
-
-public:
-  Content(std::string info) : info(info) {}
-  void getInfo() { std::cout << info << '\n'; }
-};
-
-int main() {
-  std::shared_ptr<Content> c = std::make_shared<Content>("Olá mundo!");
-  c->getInfo();
-  return 0;
-}
+```file
+path: ./ex-03.cpp
+lang: cpp
 ```
 
 ---
-
 # ex-04.cpp
-
-```cpp
-#include <iostream>
-#include <memory>
-
-struct Content {
-private:
-  std::string info;
-
-public:
-  Content(std::string info) : info(info) {}
-  void getInfo() { std::cout << info << '\n'; }
-};
-
-int main() {
-  std::unique_ptr<Content> c = std::make_unique<Content>("Olá mundo!");
-  c->getInfo();
-  return 0;
-}
+```file
+path: ./ex-04.cpp
+lang: cpp
 ```
 
 ---
-
 # ex-05.cpp
-
-```cpp
-#include <iostream>
-#include <memory>
-
-struct Content {
-private:
-  std::string info;
-
-public:
-  Content(std::string info) : info(info) {}
-  void getInfo() { std::cout << info << '\n'; }
-};
-
-int main() {
-  std::shared_ptr<Content> c;
-  c = std::make_shared<Content>("Olá mundo!");
-  c->getInfo();
-  return 0;
-}
+```file
+path: ./ex-05.cpp
+lang: cpp
 ```
 
 ---
-
 # ex-06.cpp
-
-```cpp
-#include <iostream>
-#include <memory>
-
-struct Content {
-private:
-  std::string info;
-
-public:
-  Content(std::string info) : info(info) {}
-  void getInfo() { std::cout << info << '\n'; }
-};
-
-int main() {
-  auto c = std::make_shared<Content>("Olá mundo!");
-  c->getInfo();
-  return 0;
-}
+```file
+path: ./ex-06.cpp
+lang: cpp
 ```
 
 ---
+# ex-07.cpp
+```file
+path: ./ex-07.cpp
+lang: cpp
+```
 
+---
 # Contato
 
-**lopesivan.ufrj**@gmail.com
+**lopesivan.ufrj@**@gmail.com
 
-/_ -_- vim: set ts=4 sw=4 tw=64 ft=markdown: -_- _/
+/* -*- vim: set ts=4 sw=4 tw=64 ft=markdown: -*- */
