@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-ls -rtl *.cpp |
-	cut -d" " -f9 |
-	sort -n |
+prefix=ex-
+
+ls ${prefix}*.cpp | sort -n -t'-' -k 2 |
 	tail -1 |
-	sed -e 's/ex-\([0-9]\+\).cpp/\1/' -e 's/^0//' |
-	while read n; do printf "cp ex-%02d.cpp ex-%02d.cpp\n" "$n" "$((n + 1))"; done
+	sed -e "s/${prefix}\([0-9]\+\).cpp/\1/" -e 's/^0//' |
+	while read n; do printf "cp ${prefix}%02d.cpp ${prefix}%02d.cpp\n" "$n" "$((n + 1))"; done

@@ -57,6 +57,27 @@ lang: cpp
 ```
 
 ---
+# ex-08.cpp
+```file
+path: ./ex-08.cpp
+lang: cpp
+```
+
+---
+# ex-09.cpp
+```file
+path: ./ex-09.cpp
+lang: cpp
+```
+
+---
+# ex-10.cpp
+```file
+path: ./ex-10.cpp
+lang: cpp
+```
+
+---
 # Contato
 
 **lopesivan.ufrj@**@gmail.com
