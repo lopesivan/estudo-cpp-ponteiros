@@ -78,6 +78,20 @@ lang: cpp
 ```
 
 ---
+# ex-11.cpp
+```file
+path: ./ex-11.cpp
+lang: cpp
+```
+
+---
+# ex-12.cpp
+```file
+path: ./ex-12.cpp
+lang: cpp
+```
+
+---
 # Contato
 
 **lopesivan.ufrj@**@gmail.com
