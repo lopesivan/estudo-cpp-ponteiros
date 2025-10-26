@@ -5,7 +5,8 @@
 
 // Alias genérico: unique_ptr<T, decltype(&std::free)>
 template<typename T>
-using MallocUPtr = std::unique_ptr<T, decltype (&std::free)>;
+using MallocUPtr =
+    std::unique_ptr<T, decltype (&std::free)>;
 
 int main()
 {
