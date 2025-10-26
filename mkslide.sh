@@ -26,20 +26,20 @@ EOF
 
 prefix=ex-
 ls ${prefix}*.cpp | sort -n -t'-' -k2 |
-	sed \
-		-e 'h' \
-		-e 'g;s/^/\n---\n# /' \
-		-e 'p' \
-		-e 'i\`\`\`file' \
-		-e 'x;s/^/path: .\//' \
-		-e 'alang: cpp\n\`\`\`'
+    sed \
+        -e 'h' \
+        -e 'g;s/^/\n---\n# /' \
+        -e 'p' \
+        -e 'i\`\`\`file' \
+        -e 'x;s/^/path: .\//' \
+        -e 'alang: cpp\n\`\`\`'
 
 cat <<EOF
 
 ---
 # Contato
 
-**lopesivan.ufrj@**@gmail.com
+**lopesivan.ufrj**@gmail.com
 
 /* -*- vim: set ts=4 sw=4 tw=64 ft=markdown: -*- */
 EOF
