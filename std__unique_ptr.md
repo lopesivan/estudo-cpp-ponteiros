@@ -381,3 +381,104 @@ int main() {
 Quer que eu mostre como estender o `MallocUPtr` pra lidar
 com **matrizes 2D (ex: `int**`)** também — com liberação
 automática linha a linha?
+
+
+
+ótima pergunta 👏 — dá pra usar o parâmetro `N = 5` sim, mas o jeito que está ali (`template<typename T, int N = 5>`) **não tem efeito** ainda, porque o valor `N` não está sendo usado em lugar nenhum.
+
+vamos ver como integrá-lo de verdade 👇
+
+---
+
+## 🧩 objetivo
+
+queremos que o alias (ou um helper) saiba que a “matriz” tem tamanho `N×N`, e use esse valor pra alocar e percorrer.
+
+---
+
+## ✅ opção 1 — usar o `N` dentro de uma função helper
+
+```cpp
+#include <iostream>
+#include <memory>
+#include <cstdlib>
+
+// alias do unique_ptr com free
+template<typename T>
+using MallocUPtr = std::unique_ptr<T, decltype(&std::free)>;
+
+// helper que usa N
+template<typename T, int N = 5>
+auto make_matrix()
+{
+    return MallocUPtr<T>{
+        static_cast<T*>(std::malloc(N * N * sizeof(T))),
+        &std::free
+    };
+}
+
+int main()
+{
+    constexpr int N = 5;
+    auto matriz = make_matrix<int, N>();
+
+    if (!matriz) {
+        std::cerr << "Falha ao alocar memória.\n";
+        return EXIT_FAILURE;
+    }
+
+    for (int i = 0; i < N * N; ++i)
+        matriz.get()[i] = i;
+
+    for (int i = 0; i < N * N; ++i) {
+        std::cout << matriz.get()[i] << ' ';
+        if ((i + 1) % N == 0) std::cout << '\n';
+    }
+
+    // free() automático ao sair do escopo
+}
+```
+
+🔹 **Como funciona:**
+
+* `make_matrix<int, 5>()` aloca uma matriz 5×5.
+* o valor `N` é usado tanto na alocação (`N*N*sizeof(T)`) quanto nos loops.
+
+---
+
+## ✅ opção 2 — incorporar `N` diretamente no alias (só pra referência)
+
+O `using MallocUPtr<T, int N = 5>` em si **não pode usar `N` dentro da expressão de tipo**, porque o alias só define o tipo do ponteiro — não pode executar código.
+Mas dá pra deixar o `N` no alias **pra documentação** e depois usar `N` num helper.
+
+```cpp
+template<typename T, int N = 5>
+using MatrixUPtr = std::unique_ptr<T, decltype(&std::free)>;
+
+template<typename T, int N = 5>
+MatrixUPtr<T, N> make_matrix()
+{
+    return { static_cast<T*>(std::malloc(N * N * sizeof(T))), &std::free };
+}
+```
+
+uso:
+
+```cpp
+constexpr int N = 5;
+auto matriz = make_matrix<int, N>();
+```
+
+---
+
+## 🧭 resumo
+
+| abordagem                                  | onde `N` é usado         | observação              |
+| ------------------------------------------ | ------------------------ | ----------------------- |
+| **1. helper separado (`make_matrix`)**     | dentro da função         | mais idiomático         |
+| **2. alias + helper**                      | no helper                | mantém o alias genérico |
+| **apenas alias (`using MallocUPtr<T,N>`)** | não usa `N` (sem efeito) | apenas decorativo       |
+
+---
+
+quer que eu te mostre uma versão que realmente trata como **matriz 2D** (acesso `matriz(x, y)` com operador customizado, mas ainda usando `malloc` + `unique_ptr`)?
