@@ -1,3 +1,4 @@
+// g++ -std=c++17 -O2 -Wall -Wextra -pedantic -I/usr/include/x86_64-linux-gnu ex-14.cpp -o app
 #include <iostream>
 #include <memory>
 #include <cstdlib> // malloc, free
