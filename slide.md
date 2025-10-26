@@ -113,6 +113,41 @@ lang: cpp
 ```
 
 ---
+# ex-16.cpp
+```file
+path: ./ex-16.cpp
+lang: cpp
+```
+
+---
+# ex-17.cpp
+```file
+path: ./ex-17.cpp
+lang: cpp
+```
+
+---
+# ex-18.cpp
+```file
+path: ./ex-18.cpp
+lang: cpp
+```
+
+---
+# ex-19.cpp
+```file
+path: ./ex-19.cpp
+lang: cpp
+```
+
+---
+# ex-20.cpp
+```file
+path: ./ex-20.cpp
+lang: cpp
+```
+
+---
 # Contato
 
 **lopesivan.ufrj**@gmail.com
