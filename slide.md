@@ -99,8 +99,22 @@ lang: cpp
 ```
 
 ---
+# ex-14.cpp
+```file
+path: ./ex-14.cpp
+lang: cpp
+```
+
+---
+# ex-15.cpp
+```file
+path: ./ex-15.cpp
+lang: cpp
+```
+
+---
 # Contato
 
-**lopesivan.ufrj@**@gmail.com
+**lopesivan.ufrj**@gmail.com
 
 /* -*- vim: set ts=4 sw=4 tw=64 ft=markdown: -*- */
